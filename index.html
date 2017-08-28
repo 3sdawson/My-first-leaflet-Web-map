@@ -7,60 +7,58 @@
 
     </head>
   <body>
-    <H1>Example</H1>
+    <H1>East Fork Fire</H1>
     <div id="map"></div>
 	<script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
 	<script>
   //initialize the map
-  var map = L.map('map').setView([42.3600825, -71.0588801], 12);
+  var map = L.map('map').setView([48.17, -109.625], 12);
   
   //Create baselayer - tiles
-  var backgroundMap = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
-    attribution: '<a href="http://openstreetmap.org">OpenStreetMap</a>contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
-    maxZoom: 19
-  });
+  //var backgroundMap = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+    //attribution: '<a href="http://openstreetmap.org">OpenStreetMap</a>contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+    //maxZoom: 19
+ // });
+ 	var backgroundMap = L.tileLayer('http://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+	maxZoom: 17,
+	attribution: 'Map data: &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+});
   
   backgroundMap.addTo(map);
   
   //Add markers
-  var brewery = L.marker([42.346868, -71.034396]).addTo(map);
-  brewery.addTo(map);
+  var start = L.marker([48.17, -109.625]).addTo(map);
+  start.addTo(map);
   
-  var aquarium = L.marker([42.359116, -71.049592]);
+  var aquarium = L.marker([48.191, -109.584]);
   aquarium.addTo(map);
   
-  var hotel = L.marker([42.351340, -71.040495]);
+  var hotel = L.marker([48.2, -109.619]);
   hotel.addTo(map);
   
-  var harvard = L.marker([42.376979, -71.116617]);
-  harvard.addTo(map);
   
   //Add pop-ups
-  var popup = "The Harpoon Brewery.";
-  brewery.bindPopup(popup);
+  var popup = "Fire Started Here";
+  start.bindPopup(popup);
   
-  var popup1 = "Do you sleep in the SeaPort Hotel?";
+  var popup1 = "Burnt Area";
   hotel.bindPopup(popup1)
   
-  var popup2 = "The New England Aquarium.";
+  var popup2 = "Burnt Area";
   aquarium.bindPopup(popup2);
   
-  var popup3 = "The Harvard University.";
-  harvard.bindPopup(popup3);
-  
   //add a circle
-  var circle = L.circle([42.359116, -71.049592], 4500, {
+  var circle = L.circle([48.17, -109.625], 4500, {
     color: 'red',
     fillColor: '#f03',
-    fillOpacity: 0.5
+    fillOpacity: 0.25
   }).addTo(map);  
   
   //add a polygon   
   var polygon = L.polygon([
-    [42.346868, -71.034396],
-    [42.351340, -71.040495],
-    [42.359116, -71.049592],
-    [42.376979, -71.116617]
+    [48.17, -109.625],
+    [48.191, -109.584],
+    [48.2, -109.619],
   ]).addTo(map);
   
   // Create a marker first
